@@ -1,6 +1,6 @@
 package com.github.lithualien.petclinicremastered.model;
 
-public abstract class Person {
+public abstract class Person extends BaseEntity {
 
     private String firstName;
     private String lastName;

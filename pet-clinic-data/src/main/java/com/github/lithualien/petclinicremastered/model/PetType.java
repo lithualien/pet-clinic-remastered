@@ -1,6 +1,6 @@
 package com.github.lithualien.petclinicremastered.model;
 
-public class PetType {
+public class PetType extends BaseEntity {
     private String name;
 
     public PetType() {
