@@ -29,10 +29,11 @@ public class DataLoader implements CommandLineRunner {
         owner.setLastName("Meston");
         ownerService.save(owner);
 
-        owner.setId(2L);
-        owner.setFirstName("Fiona");
-        owner.setLastName("Glenanne");
-        ownerService.save(owner);
+        Owner owner1 = new Owner();
+        owner1.setId(2L);
+        owner1.setFirstName("Fiona");
+        owner1.setLastName("Glenanne");
+        ownerService.save(owner1);
 
         System.out.println("loaded owner....");
 
@@ -42,10 +43,11 @@ public class DataLoader implements CommandLineRunner {
         vet.setLastName("Axe");
         vetService.save(vet);
 
-        vet.setId(2L);
-        vet.setFirstName("Jordan");
-        vet.setLastName("Smith");
-        vetService.save(vet);
+        Vet vet1 = new Vet();
+        vet1.setId(2L);
+        vet1.setFirstName("Jordan");
+        vet1.setLastName("Smith");
+        vetService.save(vet1);
 
         System.out.println("loaded vets....");
     }
