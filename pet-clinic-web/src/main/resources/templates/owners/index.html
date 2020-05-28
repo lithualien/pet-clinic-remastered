@@ -17,9 +17,9 @@
         </thead>
         <tbody>
         <tr th:each="owner : ${owners}">
-            <th th:text="${owner.getId()}"></th>
-            <th th:text="${owner.getFirstName()}"></th>
-            <th th:text="${owner.getLastName()}"></th>
+            <td th:text="${owner.getId()}"></td>
+            <td th:text="${owner.getFirstName()}"></td>
+            <td th:text="${owner.getLastName()}"></td>
         </tr>
         </tbody>
     </table>
