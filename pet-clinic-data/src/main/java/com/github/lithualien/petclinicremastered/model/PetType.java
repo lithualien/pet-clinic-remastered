@@ -1,5 +1,10 @@
 package com.github.lithualien.petclinicremastered.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "pet_types")
 public class PetType extends BaseEntity {
     private String name;
 
