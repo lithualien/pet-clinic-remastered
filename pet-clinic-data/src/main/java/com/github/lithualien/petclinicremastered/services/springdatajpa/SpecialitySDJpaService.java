@@ -1,8 +1,8 @@
 package com.github.lithualien.petclinicremastered.services.springdatajpa;
 
-import com.github.lithualien.petclinicremastered.model.Specialty;
+import com.github.lithualien.petclinicremastered.model.Speciality;
 import com.github.lithualien.petclinicremastered.repositories.SpecialtyRepository;
-import com.github.lithualien.petclinicremastered.services.SpecialtyService;
+import com.github.lithualien.petclinicremastered.services.SpecialityService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +11,17 @@ import java.util.Set;
 
 @Service
 @Profile({"springdatajpa"})
-public class SpecialtySDJpaService implements SpecialtyService {
+public class SpecialitySDJpaService implements SpecialityService {
 
     private final SpecialtyRepository specialtyRepository;
 
-    public SpecialtySDJpaService(SpecialtyRepository specialtyRepository) {
+    public SpecialitySDJpaService(SpecialtyRepository specialtyRepository) {
         this.specialtyRepository = specialtyRepository;
     }
 
     @Override
-    public Set<Specialty> findAll() {
-        Set<Specialty> specialties = new HashSet<>();
+    public Set<Speciality> findAll() {
+        Set<Speciality> specialties = new HashSet<>();
         specialtyRepository
                 .findAll()
                 .forEach(specialties::add);
@@ -29,19 +29,19 @@ public class SpecialtySDJpaService implements SpecialtyService {
     }
 
     @Override
-    public Specialty findById(Long id) {
+    public Speciality findById(Long id) {
         return specialtyRepository
                 .findById(id)
                 .orElse(null);
     }
 
     @Override
-    public Specialty save(Specialty object) {
+    public Speciality save(Speciality object) {
         return specialtyRepository.save(object);
     }
 
     @Override
-    public void delete(Specialty object) {
+    public void delete(Speciality object) {
         specialtyRepository.delete(object);
     }
 

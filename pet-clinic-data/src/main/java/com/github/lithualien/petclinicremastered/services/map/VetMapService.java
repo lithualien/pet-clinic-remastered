@@ -1,18 +1,20 @@
 package com.github.lithualien.petclinicremastered.services.map;
 
-import com.github.lithualien.petclinicremastered.model.Specialty;
+import com.github.lithualien.petclinicremastered.model.Speciality;
 import com.github.lithualien.petclinicremastered.model.Vet;
-import com.github.lithualien.petclinicremastered.services.SpecialtyService;
+import com.github.lithualien.petclinicremastered.services.SpecialityService;
 import com.github.lithualien.petclinicremastered.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
-    private final SpecialtyService specialtyService;
+    private final SpecialityService specialtyService;
 
-    public VetMapService(SpecialtyService specialtyService) {
+    public VetMapService(SpecialityService specialtyService) {
         this.specialtyService = specialtyService;
     }
 
@@ -34,12 +36,12 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
     @Override
     public Vet save(Vet object) {
 
-        if(object.getSpecialties().size() > 0) {
+        if(object.getSpecialities().size() > 0) {
             object
-                    .getSpecialties()
+                    .getSpecialities()
                     .forEach(specialty -> {
                         if(specialty.getId() == null) {
-                            Specialty savedSpecialty = specialtyService.save(specialty);
+                            Speciality savedSpecialty = specialtyService.save(specialty);
                             specialty.setId(savedSpecialty.getId());
                         }
                     });
