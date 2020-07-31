@@ -1,11 +1,7 @@
 package com.github.lithualien.petclinicremastered.bootstrap;
 
 import com.github.lithualien.petclinicremastered.model.*;
-import com.github.lithualien.petclinicremastered.services.OwnerService;
-import com.github.lithualien.petclinicremastered.services.PetTypeService;
-import com.github.lithualien.petclinicremastered.services.SpecialtyService;
-import com.github.lithualien.petclinicremastered.services.VetService;
-import jdk.nashorn.internal.runtime.Specialization;
+import com.github.lithualien.petclinicremastered.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -101,6 +99,12 @@ public class DataLoader implements CommandLineRunner {
         vet1.setLastName("Smith");
         vet1.getSpecialties().add(savedSurgery);
         vetService.save(vet1);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionaPet);
+        catVisit.setLocalDate(LocalDate.now());
+        catVisit.setDescription("Sneazy kitty");
+        visitService.save(catVisit);
 
         System.out.println("loaded vets....");
     }
